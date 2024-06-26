@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:09:51 by mavissar          #+#    #+#             */
-/*   Updated: 2024/06/24 17:48:14 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:25:55 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-// # endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE
+# endif
 
 char	*next_line(char **string);
 char	*read_line(int fd, char *to_save, char *buffer);

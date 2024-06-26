@@ -6,7 +6,7 @@
 /*   By: mavissar <mavissar@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 14:58:17 by mavissar          #+#    #+#             */
-/*   Updated: 2024/06/24 17:49:55 by mavissar         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:28:38 by mavissar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,29 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	res = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!res)
-		return (NULL);
+		return (free(s1), NULL);
 	while (s1 && s1[j])
 		res[i++] = s1[j++];
 	j = 0;
 	while (s2[j])
 		res[i++] = s2[j++];
 	res[i] = '\0';
+	free(s1);
 	return (res);
 }
 
 char	*ft_strchr(char *string)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!string)
 		return (0);
 	while (string[i])
 	{
-	if (string[i] == '\n')
-		return ((char *)&string[i]);
-	i++;
+		if (string[i] == '\n')
+			return ((char *)&string[i]);
+		i++;
 	}
 	if (string[i] == '\n')
 		return ((char *)&string[i]);
@@ -71,7 +72,6 @@ char	*ft_substr(char *s, int start, int len)
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
-		// return (malloc(1));
 		return (0);
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
@@ -89,8 +89,8 @@ char	*ft_substr(char *s, int start, int len)
 
 char	*ft_strdup(char *str)
 {
-	int		i;
-	char	*dest;
+	unsigned int	i;
+	char			*dest;
 
 	i = 0;
 	if (!str)
@@ -99,8 +99,10 @@ char	*ft_strdup(char *str)
 	if (!dest)
 		return (NULL);
 	while (str[i])
+	{
 		dest[i] = str[i];
-            i++;
+		i++;
+	}
 	dest[i] = '\0';
 	return (dest);
 }
